@@ -5,36 +5,19 @@ import os
 
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
 
-# CSS com seletores completos do Streamlit para forçar a cor cinza nos filtros
+# CSS para alterar o fundo da caixa st.success na Sidebar
 st.markdown("""
     <style>
-    /* 1. Mudar o fundo e texto dos chips/tags do multiselect na Sidebar */
-    [data-testid="stSidebar"] span[data-baseweb="tag"],
-    [data-testid="stSidebar"] [data-baseweb="tag"] {
-        background-color: #6C757D !important;
-        border-color: #5A6268 !important;
+    /* Altera o fundo da caixa de mensagem success na sidebar para cinza */
+    [data-testid="stSidebar"] [data-testid="stNotification"] {
+        background-color: #E2E6EA !important; /* Cor cinza claro */
+        color: #383D41 !important;            /* Cor do texto em cinza escuro */
+        border: 1px solid #D6D8DB !important;  /* Borda sutil */
     }
-
-    /* Textos dentro da tag */
-    [data-testid="stSidebar"] span[data-baseweb="tag"] * {
-        color: #68879e !important;
-    }
-
-    /* Ícone de fechar (X) da tag */
-    [data-testid="stSidebar"] [data-baseweb="tag"] [role="button"] svg {
-        fill: #68879e !important;
-    }
-
-    /* 2. Borda e destaque de foco no campo de busca do filtro quando está ativo */
-    [data-testid="stSidebar"] div[data-baseweb="select"] > div:focus-within {
-        border-color: #6C757D !important;
-        box-shadow: 0 0 0 1px #6C757D !important;
-    }
-
-    /* 3. Cor dos itens marcados na lista suspensa do multiselect */
-    [data-baseweb="popover"] [aria-selected="true"] {
-        background-color: #E9ECEF !important;
-        color: #212529 !important;
+    
+    /* Altera o ícone de check dentro da caixa (opcional) */
+    [data-testid="stSidebar"] [data-testid="stNotification"] svg {
+        fill: #495057 !important;
     }
     </style>
 """, unsafe_allow_html=True)
