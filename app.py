@@ -15,8 +15,21 @@ if not csv_files:
     st.stop()
 
 csv_path = csv_files[0]
-#st.sidebar.success(f"📁 Arquivo lido: {csv_path}")
-st.sidebar.info(f"📁 Arquivo lido: {csv_path}")
+st.sidebar.markdown(f"""
+    <div style="
+        background-color: #E2E6EA;
+        color: #212529;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #CED4DA;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 15px;
+    ">
+        📁 Arquivo lido: {csv_path}
+    </div>
+""", unsafe_allow_html=True)
+
 def make_unique_columns(col_list):
     seen = {}
     new_cols = []
