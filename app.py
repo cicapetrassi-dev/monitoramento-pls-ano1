@@ -5,22 +5,6 @@ import os
 
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
 
-# CSS para alterar o fundo da caixa st.success na Sidebar
-st.markdown("""
-    <style>
-    /* Altera o fundo da caixa de mensagem success na sidebar para cinza */
-    [data-testid="stSidebar"] [data-testid="stNotification"] {
-        background-color: #E2E6EA !important; /* Cor cinza claro */
-        color: #383D41 !important;            /* Cor do texto em cinza escuro */
-        border: 1px solid #D6D8DB !important;  /* Borda sutil */
-    }
-    
-    /* Altera o ícone de check dentro da caixa (opcional) */
-    [data-testid="stSidebar"] [data-testid="stNotification"] svg {
-        fill: #495057 !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029) ANO 1")
 
