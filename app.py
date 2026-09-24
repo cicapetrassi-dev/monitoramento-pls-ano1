@@ -17,8 +17,8 @@ if not csv_files:
 csv_path = csv_files[0]
 st.sidebar.markdown(f"""
     <div style="
-        background-color: #E2E6EA;
-        color: #fffafa;
+        background-color: #fffafa;
+        color: #787171;
         padding: 10px 14px;
         border-radius: 8px;
         border: 1px solid #CED4DA;
