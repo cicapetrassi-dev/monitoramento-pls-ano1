@@ -5,34 +5,36 @@ import os
 
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
 
-# --- CSS CUSTOMIZADO PARA MUDAR A COR DOS FILTROS E BOTÕES DA SIDEBAR PARA CINZA ---
+# CSS com seletores completos do Streamlit para forçar a cor cinza nos filtros
 st.markdown("""
     <style>
-    /* Altera a cor dos chips/tags selecionados no st.multiselect dentro da sidebar */
+    /* 1. Mudar o fundo e texto dos chips/tags do multiselect na Sidebar */
+    [data-testid="stSidebar"] span[data-baseweb="tag"],
     [data-testid="stSidebar"] [data-baseweb="tag"] {
-        background-color: #6C757D !important; /* Cinza */
+        background-color: #6C757D !important;
         border-color: #5A6268 !important;
     }
-    
-    /* Cor do texto dentro da tag selecionada */
-    [data-testid="stSidebar"] [data-baseweb="tag"] span {
+
+    /* Textos dentro da tag */
+    [data-testid="stSidebar"] span[data-baseweb="tag"] * {
         color: #FFFFFF !important;
     }
 
-    /* Cor do ícone de fechar (x) da tag no hover/foco */
-    [data-testid="stSidebar"] [data-baseweb="tag"] [role="button"]:hover {
-        background-color: #5A6268 !important;
+    /* Ícone de fechar (X) da tag */
+    [data-testid="stSidebar"] [data-baseweb="tag"] [role="button"] svg {
+        fill: #FFFFFF !important;
     }
 
-    /* Caso você adicione st.button comum na sidebar */
-    [data-testid="stSidebar"] div.stButton > button {
-        background-color: #6C757D !important;
-        color: white !important;
+    /* 2. Borda e destaque de foco no campo de busca do filtro quando está ativo */
+    [data-testid="stSidebar"] div[data-baseweb="select"] > div:focus-within {
         border-color: #6C757D !important;
+        box-shadow: 0 0 0 1px #6C757D !important;
     }
-    [data-testid="stSidebar"] div.stButton > button:hover {
-        background-color: #5A6268 !important;
-        border-color: #545B62 !important;
+
+    /* 3. Cor dos itens marcados na lista suspensa do multiselect */
+    [data-baseweb="popover"] [aria-selected="true"] {
+        background-color: #E9ECEF !important;
+        color: #212529 !important;
     }
     </style>
 """, unsafe_allow_html=True)
