@@ -17,12 +17,12 @@ st.markdown("""
 
     /* Textos dentro da tag */
     [data-testid="stSidebar"] span[data-baseweb="tag"] * {
-        color: #FFFFFF !important;
+        color: #68879e !important;
     }
 
     /* Ícone de fechar (X) da tag */
     [data-testid="stSidebar"] [data-baseweb="tag"] [role="button"] svg {
-        fill: #FFFFFF !important;
+        fill: #68879e !important;
     }
 
     /* 2. Borda e destaque de foco no campo de busca do filtro quando está ativo */
