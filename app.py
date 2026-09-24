@@ -5,7 +5,6 @@ import os
 
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
 
-
 st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029) ANO 1")
 
 csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
@@ -15,17 +14,13 @@ if not csv_files:
     st.stop()
 
 csv_path = csv_files[0]
-# Adiciona a logo a partir de um arquivo local
-#st.sidebar.image("logo cga.jpg", use_container_width=True)
-# Cria 3 colunas na sidebar para centralizar a imagem no meio
+
+# Cria 3 colunas na sidebar para centralizar a logo no meio
 col1, col2, col3 = st.sidebar.columns([1, 7, 1])
 
 with col2:
-    st.image(
-        "logo cga.jpg",
-        use_container_width=True
-    )
-    
+    st.image("logo cga.jpg", use_container_width=True)
+
 st.sidebar.markdown(f"""
     <div style="
         background-color: #fffcf5;
@@ -112,13 +107,22 @@ try:
     status_opts = sorted([str(x) for x in df[status_col].dropna().unique()])
     status_sel = st.sidebar.multiselect("Status da Ação:", options=status_opts, default=status_opts)
 
-    # Add 'Responsável' filter if 'ENVOLVIDOS' column exists
+    # Adiciona o filtro de 'Responsável' se a coluna 'ENVOLVIDOS' existir
     if 'ENVOLVIDOS' in df.columns:
         responsaveis = sorted([str(x) for x in df['ENVOLVIDOS'].dropna().unique()])
         responsaveis_sel = st.sidebar.multiselect("Responsável:", options=responsaveis, default=responsaveis)
         df_filtered = df[(df['EIXO'].astype(str).isin(eixos_sel)) & (df[status_col].astype(str).isin(status_sel)) & (df['ENVOLVIDOS'].astype(str).isin(responsaveis_sel))]
     else:
         df_filtered = df[(df['EIXO'].astype(str).isin(eixos_sel)) & (df[status_col].astype(str).isin(status_sel))]
+
+    # Botão para baixar os dados filtrados em CSV na Sidebar
+    csv_exp = df_filtered.to_csv(index=False).encode('utf-8')
+    st.sidebar.download_button(
+        label="📥 Baixar Dados Filtrados (CSV)",
+        data=csv_exp,
+        file_name="dados_pls_filtrados.csv",
+        mime="text/csv"
+    )
 
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Total de Ações", len(df_filtered))
@@ -160,10 +164,10 @@ try:
         )
         st.plotly_chart(fig_bar, use_container_width=True)
 
-    # New row for additional charts
+    # Gráfico adicional por responsável
     if 'ENVOLVIDOS' in df.columns:
         st.markdown("---")
-        col_g3, _ = st.columns(2) # Create a new row with two columns, using only the first one for the chart
+        col_g3, _ = st.columns(2)
         with col_g3:
             st.subheader("🧑‍💻 Distribuição por Responsável")
             fig_resp = px.histogram(
@@ -183,14 +187,6 @@ try:
 
     st.subheader("📋 Tabela Completa de Ações")
     st.dataframe(df_filtered, hide_index=True, use_container_width=True)
-    
-csv_exp = df_filtered.to_csv(index=False).encode('utf-8')
-st.sidebar.download_button(
-    label="📥 Baixar Dados Filtrados (CSV)",
-    data=csv_exp,
-    file_name="dados_pls_filtrados.csv",
-    mime="text/csv"
-)
 
 except Exception as e:
     st.error(f"Erro ao carregar os dados: {e}")
