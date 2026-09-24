@@ -15,6 +15,9 @@ if not csv_files:
     st.stop()
 
 csv_path = csv_files[0]
+# Adiciona a logo a partir de um arquivo local
+st.sidebar.image("logo cga.jpg", use_container_width=True)
+
 st.sidebar.markdown(f"""
     <div style="
         background-color: #fffafa;
