@@ -1,11 +1,43 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
 
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
-st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029)")
+
+# --- CSS CUSTOMIZADO PARA MUDAR A COR DOS FILTROS E BOTÕES DA SIDEBAR PARA CINZA ---
+st.markdown("""
+    <style>
+    /* Altera a cor dos chips/tags selecionados no st.multiselect dentro da sidebar */
+    [data-testid="stSidebar"] [data-baseweb="tag"] {
+        background-color: #6C757D !important; /* Cinza */
+        border-color: #5A6268 !important;
+    }
+    
+    /* Cor do texto dentro da tag selecionada */
+    [data-testid="stSidebar"] [data-baseweb="tag"] span {
+        color: #FFFFFF !important;
+    }
+
+    /* Cor do ícone de fechar (x) da tag no hover/foco */
+    [data-testid="stSidebar"] [data-baseweb="tag"] [role="button"]:hover {
+        background-color: #5A6268 !important;
+    }
+
+    /* Caso você adicione st.button comum na sidebar */
+    [data-testid="stSidebar"] div.stButton > button {
+        background-color: #6C757D !important;
+        color: white !important;
+        border-color: #6C757D !important;
+    }
+    [data-testid="stSidebar"] div.stButton > button:hover {
+        background-color: #5A6268 !important;
+        border-color: #545B62 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029) ANO 1")
 
 csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
 
@@ -111,10 +143,10 @@ try:
             names=status_col, 
             color=status_col,
             color_discrete_map={
-                'Concluído': '#2ECC71', 
-                'Em andamento': '#F1C40F', 
-                'Não iniciado': '#BDC3C7',
-                'Sem informação': '#E67E22'
+                'Concluído': '#2E7D32', 
+                'Em andamento': '#1976D2', 
+                'Não iniciado': '#D32F2F',
+                'Sem informação': '#F57C00'
             },
             hole=0.4
         )
@@ -127,10 +159,10 @@ try:
             x='EIXO', 
             color=status_col,
             color_discrete_map={
-                'Concluído': '#2ECC71', 
-                'Em andamento': '#F1C40F', 
-                'Não iniciado': '#BDC3C7',
-                'Sem informação': '#E67E22'
+                'Concluído': '#2E7D32', 
+                'Em andamento': '#1976D2', 
+                'Não iniciado': '#D32F2F',
+                'Sem informação': '#F57C00'
             }
         )
         st.plotly_chart(fig_bar, use_container_width=True)
@@ -146,16 +178,15 @@ try:
                 x='ENVOLVIDOS', 
                 color=status_col,
                 color_discrete_map={
-                    'Concluído': '#2ECC71', 
-                    'Em andamento': '#F1C40F', 
-                    'Não iniciado': '#BDC3C7',
-                    'Sem informação': '#E67E22'
+                    'Concluído': '#2E7D32', 
+                    'Em andamento': '#1976D2', 
+                    'Não iniciado': '#D32F2F',
+                    'Sem informação': '#F57C00'
                 },
                 title="Ações por Responsável"
             )
             fig_resp.update_layout(xaxis_title="Responsável", yaxis_title="Número de Ações")
             st.plotly_chart(fig_resp, use_container_width=True)
-
 
     st.subheader("📋 Tabela Completa de Ações")
     st.dataframe(df_filtered, use_container_width=True)
