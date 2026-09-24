@@ -18,7 +18,7 @@ csv_path = csv_files[0]
 # Adiciona a logo a partir de um arquivo local
 #st.sidebar.image("logo cga.jpg", use_container_width=True)
 # Cria 3 colunas na sidebar para centralizar a imagem no meio
-col1, col2, col3 = st.sidebar.columns([1, 4, 1])
+col1, col2, col3 = st.sidebar.columns([1, 5, 1])
 
 with col2:
     st.image(
