@@ -28,7 +28,7 @@ with col2:
     
 st.sidebar.markdown(f"""
     <div style="
-        background-color: #fffafa;
+        background-color: #fffcf5;
         color: #787171;
         padding: 10px 14px;
         border-radius: 8px;
