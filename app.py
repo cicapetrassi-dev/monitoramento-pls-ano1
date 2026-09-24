@@ -182,7 +182,15 @@ try:
             st.plotly_chart(fig_resp, use_container_width=True)
 
     st.subheader("📋 Tabela Completa de Ações")
-    st.dataframe(df_filtered, use_container_width=True)
+    st.dataframe(df_filtered, hide_index=True, use_container_width=True)
+    
+csv_exp = df_filtered.to_csv(index=False).encode('utf-8')
+st.sidebar.download_button(
+    label="📥 Baixar Dados Filtrados (CSV)",
+    data=csv_exp,
+    file_name="dados_pls_filtrados.csv",
+    mime="text/csv"
+)
 
 except Exception as e:
     st.error(f"Erro ao carregar os dados: {e}")
