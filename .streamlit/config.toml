@@ -1,6 +1,6 @@
 
 [theme]
 primaryColor = "#6C757D"                 # Cor cinza dos botões/filtros atrativos
-secondaryBackgroundColor = "#839e9d"    # Cor de fundo da sidebar (verde)
+secondaryBackgroundColor = "#d5eded"    # Cor de fundo da sidebar (verde)
 backgroundColor = "#f2fcfc"             # Cor de fundo da área principal
 textColor = "#212529"                   # Cor do texto
