@@ -162,6 +162,8 @@ try:
                 'Sem informação': '#F57C00'
             }
         )
+        # Ajuste do nome do eixo Y de "count" para "Número de ações"
+        fig_bar.update_layout(yaxis_title="Número de ações", xaxis_title="Eixo Temático")
         st.plotly_chart(fig_bar, use_container_width=True)
 
     # Gráfico adicional por responsável
