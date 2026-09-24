@@ -15,8 +15,8 @@ if not csv_files:
     st.stop()
 
 csv_path = csv_files[0]
-st.sidebar.success(f"📁 Arquivo lido: {csv_path}")
-
+#st.sidebar.success(f"📁 Arquivo lido: {csv_path}")
+st.sidebar.info(f"📁 Arquivo lido: {csv_path}")
 def make_unique_columns(col_list):
     seen = {}
     new_cols = []
