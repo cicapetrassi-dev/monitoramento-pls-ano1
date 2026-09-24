@@ -16,15 +16,16 @@ if not csv_files:
 
 csv_path = csv_files[0]
 # Adiciona a logo a partir de um arquivo local
-st.sidebar.image("logo cga.jpg", use_container_width=True)
+#st.sidebar.image("logo cga.jpg", use_container_width=True)
 # Cria 3 colunas na sidebar para centralizar a imagem no meio
 col1, col2, col3 = st.sidebar.columns([1, 2, 1])
 
 with col2:
     st.image(
-        "https://identidade.ufsc.br/files/2021/04/Brasao_UFSC_cor.png",
+        "logo cga.jpg",
         use_container_width=True
     )
+    
 st.sidebar.markdown(f"""
     <div style="
         background-color: #fffafa;
