@@ -6,6 +6,7 @@ import os
 st.set_page_config(page_title="Dashboard PLS UFSC", layout="wide")
 
 st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029) ANO 1")
+  page_icon="📋🌿",
 
 csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
 
