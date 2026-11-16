@@ -4,7 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 st.set_page_config(
-    page_title="Dashboard PLS UFSC", page_icon="🌿", layout="wide"
+    page_title="Dashboard PLS UFSC", page_icon="🌱", layout="wide"
 )
 
 st.title("🌱 Dashboard de Monitoramento do PLS UFSC (2025–2029) ANO 1")
